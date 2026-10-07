@@ -1,252 +1,394 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <title>Untitled</title>
-    
-
-  </head>
-    
-  <body>
-  <!DOCTYPE html>
-<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>King Of Nifty</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Stock Market</title>
 
-<style>
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '29047250298213663');
+    fbq('track', 'PageView');
+    </script>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=29047250298213663&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
 
-body{
-background:#0f172a;
-display:flex;
-justify-content:center;
-align-items:center;
-min-height:100vh;
-color:#fff;
-}
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
 
-/* CARD */
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-.container{
-width:95%;
-max-width:420px;
-padding:30px 25px;
-border-radius:18px;
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
 
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(12px);
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-border:1px solid rgba(255,255,255,0.08);
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #050505;
+            color: #fff;
+        }
 
-box-shadow:0 20px 60px rgba(0,0,0,0.6);
-text-align:center;
-}
+        .bg-overlay {
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(circle at top, rgba(220, 30, 45, 0.18), transparent 40%),
+                linear-gradient(135deg, #050505, #111111);
+            z-index: -1;
+        }
 
-/* LOGO */
+        .main-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 30px 15px;
+        }
 
-.logo{
-width:80px;
-height:80px;
-border-radius:50%;
-border:2px solid #FFD700;
-margin-bottom:12px;
-}
+        .main-box {
+            background: rgba(20, 20, 20, 0.96);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 22px;
+            padding: 28px 22px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.55);
+        }
 
-/* TEXT */
+        .logo-box {
+            position: relative;
+            width: 115px;
+            height: 115px;
+            margin: 0 auto 15px;
+        }
 
-h1{
-font-size:22px;
-color:#FFD700;
-margin-bottom:6px;
-}
+        .logo {
+            width: 115px;
+            height: 115px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #e53935;
+        }
 
-h2{
-font-size:15px;
-opacity:0.9;
-margin-bottom:10px;
-}
+        .verify {
+            position: absolute;
+            right: 2px;
+            bottom: 4px;
+            width: 30px;
+            height: 30px;
+            background: #e53935;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #141414;
+            font-size: 13px;
+        }
 
-.sub{
-font-size:13px;
-opacity:0.7;
-margin-bottom:18px;
-}
+        .title {
+            margin: 8px 0;
+            font-size: 30px;
+            font-weight: 800;
+        }
 
-/* BUTTON */
+        .dash {
+            color: #777;
+        }
 
-.btn{
-display:block;
-text-decoration:none;
-background:#22c55e;
-color:#000;
-font-weight:700;
-padding:16px;
-border-radius:10px;
-margin:12px 0;
-transition:0.3s;
-}
+        .red {
+            color: #ef3b3b;
+        }
 
-.btn:hover{
-background:#16a34a;
-transform:scale(1.03);
-}
+        .white {
+            color: #fff;
+        }
 
-/* TRUST BOX */
+        .users,
+        .trusted {
+            font-size: 14px;
+            margin-top: 8px;
+            color: #d6d6d6;
+        }
 
-.trust{
-background:rgba(0,255,150,0.08);
-padding:10px;
-border-radius:10px;
-font-size:13px;
-margin-bottom:15px;
-border:1px solid rgba(0,255,150,0.2);
-}
+        .users i,
+        .trusted i {
+            color: #ef3b3b;
+            margin-right: 6px;
+        }
 
-/* LIST */
+        .hindi {
+            margin: 22px 0 17px;
+            font-size: 15px;
+            line-height: 1.7;
+            color: #eeeeee;
+        }
 
-.points{
-list-style:none;
-font-size:14px;
-text-align:left;
-margin:15px 0;
-}
+        .download-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 15px 18px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #e53935, #b71c1c);
+            color: #fff;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 700;
+            box-shadow: 0 8px 25px rgba(229, 57, 53, 0.28);
+            transition: 0.25s ease;
+        }
 
-.points li{
-margin:8px 0;
-}
+        .download-btn:hover {
+            color: #fff;
+            transform: translateY(-2px);
+        }
 
-/* URGENCY */
+        .feature-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #101010;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
 
-.timer{
-margin-top:10px;
-font-size:13px;
-color:#facc15;
-}
+        .feature-item {
+            text-align: left;
+            font-size: 13px;
+            color: #e5e5e5;
+            padding: 9px 4px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
 
-/* SOCIAL PROOF */
+        .feature-item:last-child {
+            border-bottom: none;
+        }
 
-.proof{
-margin-top:12px;
-font-size:12px;
-opacity:0.7;
-}
+        .feature-item i {
+            color: #ef3b3b;
+            margin-right: 9px;
+            width: 18px;
+        }
 
-/* FOOTER BRAND */
+        .footer-box {
+            margin-top: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: #999;
+            font-size: 11px;
+            line-height: 1.5;
+        }
 
-.footer{
-margin-top:20px;
-font-size:12px;
-opacity:0.6;
-}
+        .footer-box i {
+            color: #e53935;
+            font-size: 18px;
+        }
 
-.footer a{
-color:#38bdf8;
-text-decoration:none;
-font-weight:600;
-}
+        .footer-box p {
+            margin: 0;
+        }
 
-.footer a:hover{
-text-decoration:underline;
-}
+        @media (max-width: 576px) {
 
-/* RISK */
+            .main-section {
+                padding: 18px 12px;
+            }
 
-.risk{
-margin-top:10px;
-font-size:11px;
-opacity:0.5;
-}
+            .main-box {
+                padding: 25px 17px;
+                border-radius: 18px;
+            }
 
-</style>
+            .logo-box,
+            .logo {
+                width: 105px;
+                height: 105px;
+            }
+
+            .title {
+                font-size: 27px;
+            }
+
+            .hindi {
+                font-size: 14px;
+            }
+
+            .download-btn {
+                font-size: 16px;
+            }
+        }
+    </style>
+
 </head>
 
 <body>
 
-<div class="container">
+<div class="bg-overlay"></div>
 
-<img src="https://gautam-kumar-jha.lovable.app/__l5e/assets-v1/ad31763a-2e85-46f2-971b-34ed3281faa1/gautam-kumar-jha-profile.jpg" class="logo">
+<section class="main-section">
 
-<h1>Gautam Jha</h1>
-<h2>NIFTY • BANKNIFTY • OPTIONS</h2>
+    <div class="container">
 
-<p class="sub">
-Daily Intraday Trading Signals & Analysis
-</p>
+        <div class="row justify-content-center">
 
-<!-- TOP BUTTON -->
-<a href="https://t.me/+mZCsuCykUPZhNTll" class="btn">
-JOIN NOW FOR FREE TELEGRAM
-</a>
+            <div class="col-lg-5 col-md-7 col-sm-10">
 
-<div class="trust">
-✔ Trusted by 5,000+ Traders <br>
-✔ Daily Consistent Setups
-</div>
+                <div class="main-box">
 
-<ul class="points">
-<li>✔ 5–7 High Probability Trades</li>
-<li>✔ Exact Entry, SL & Target</li>
-<li>✔ Beginner Friendly Guidance</li>
-<li>✔ Live Market Updates</li>
-</ul>
+                    <!-- Logo -->
+                    <div class="logo-box">
 
-<!-- BOTTOM BUTTON -->
-<a href="https://t.me/+mZCsuCykUPZhNTll" class="btn">
-  JOIN NOW FOR FREE TELEGRAM
-</a>
+                        <img src="https://gauthamkumartrader.netlify.app/channel-dp.jpg"
+                             class="logo img-fluid"
+                             alt="Stock Market">
 
-<div class="timer">
-⏳ Free Access Closing Soon
-</div>
+                        <div class="verify">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
 
-<div class="proof">
-📈 Limited Seats • Active Community
-</div>
+                    </div>
 
-<p class="risk">
-⚠ Market investments are subject to risk
-</p>
+                    <!-- Heading -->
+                    <h1 class="title">
 
-<!-- CLEAN FOOTER -->
-<div class="footer">
-Powered By 
-<a href="https://t.me/+mZCsuCykUPZhNTll" target="_blank">
-Ads2Laabh
-</a>
-</div>
-</div>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1736191051014541');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1736191051014541&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+                        <span class="">-</span>
+                        <span class="red">Gautam</span>
+                        <span class="white">Jha</span>
+                        <span class="">-</span>
+                    </h1>
+
+                    <!-- Users -->
+                    <div class="users">
+
+                        <i class="fa-solid fa-users"></i>
+                        100K+ Active Members
+
+                    </div>
+
+                    <!-- Trusted -->
+                    <div class="trusted">
+
+                        <i class="fa-solid fa-chart-line"></i>
+                        Smart Market Insights & Trading Ideas
+
+                    </div>
+
+                    <!-- Hindi -->
+                    <p class="hindi">
+
+                        
+
+                        
+
+                    </p>
+
+                    <!-- Join -->
+                    <a href="https://t.me/+mZCsuCykUPZhNTll"
+                       class="download-btn">
+
+                        <i class="fa-brands fa-telegram"></i>
+
+                        Join Now For Free Telegram
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                    <!-- Features -->
+                    <div class="feature-box">
+
+                        <div class="feature-item">
+
+                            <i class="fa-solid fa-bolt"></i>
+                            Daily Market Updates & Analysis
+
+                        </div>
+
+                        <div class="feature-item">
+
+                            <i class="fa-solid fa-chart-line"></i>
+                            Nifty & Bank Nifty Market Insights
+
+                        </div>
+
+                        <div class="feature-item">
+
+                            <i class="fa-solid fa-bullseye"></i>
+                            Stocks & Market Watchlist Ideas
+
+                        </div>
+
+                        <div class="feature-item">
+
+                            <i class="fa-solid fa-clock"></i>
+                            Regular Market Updates
+
+                        </div>
+
+                    </div>
+
+                    <!-- Join -->
+                    <a href="https://t.me/+mZCsuCykUPZhNTll"
+                       class="download-btn mt-4">
+
+                        <i class="fa-brands fa-telegram"></i>
+
+                        Join Now For Free Telegram
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                    <!-- Footer -->
+                    <div class="footer-box">
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                        <div>
+
+                            <p>Market information is provided for educational purposes only.</p>
+
+                            <p>Please do your own research before making investment decisions.</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
-</html>
-    
-  </body>
-  
 </html>
