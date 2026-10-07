@@ -44,8 +44,16 @@
             box-sizing: border-box;
         }
 
+        html,
         body {
+            width: 100%;
+            min-height: 100%;
             margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        body {
             font-family: 'Poppins', sans-serif;
             background: #050505;
             color: #fff;
@@ -61,13 +69,24 @@
         }
 
         .main-section {
+            width: 100%;
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 30px 15px;
+            padding: 25px 12px;
+        }
+
+        .main-section .container {
+            width: 100%;
+            max-width: 100%;
+            padding-left: 0;
+            padding-right: 0;
         }
 
         .main-box {
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto;
             background: rgba(20, 20, 20, 0.96);
             border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 22px;
@@ -89,6 +108,7 @@
             object-fit: cover;
             border-radius: 50%;
             border: 3px solid #e53935;
+            display: block;
         }
 
         .verify {
@@ -110,10 +130,7 @@
             margin: 8px 0;
             font-size: 30px;
             font-weight: 800;
-        }
-
-        .dash {
-            color: #777;
+            line-height: 1.2;
         }
 
         .red {
@@ -129,6 +146,7 @@
             font-size: 14px;
             margin-top: 8px;
             color: #d6d6d6;
+            line-height: 1.5;
         }
 
         .users i,
@@ -150,13 +168,15 @@
             justify-content: center;
             gap: 12px;
             width: 100%;
-            padding: 15px 18px;
+            min-height: 52px;
+            padding: 15px 14px;
             border-radius: 12px;
             background: linear-gradient(135deg, #e53935, #b71c1c);
             color: #fff;
             text-decoration: none;
             font-size: 17px;
             font-weight: 700;
+            line-height: 1.3;
             box-shadow: 0 8px 25px rgba(229, 57, 53, 0.28);
             transition: 0.25s ease;
         }
@@ -164,6 +184,10 @@
         .download-btn:hover {
             color: #fff;
             transform: translateY(-2px);
+        }
+
+        .download-btn i {
+            flex-shrink: 0;
         }
 
         .feature-box {
@@ -180,6 +204,7 @@
             color: #e5e5e5;
             padding: 9px 4px;
             border-bottom: 1px solid rgba(255,255,255,0.06);
+            line-height: 1.5;
         }
 
         .feature-item:last-child {
@@ -206,39 +231,138 @@
         .footer-box i {
             color: #e53935;
             font-size: 18px;
+            flex-shrink: 0;
         }
 
         .footer-box p {
             margin: 0;
         }
 
+        /* Mobile */
         @media (max-width: 576px) {
 
             .main-section {
-                padding: 18px 12px;
+                min-height: 100vh;
+                padding: 15px 10px;
+                align-items: flex-start;
+            }
+
+            .main-section .container {
+                margin-top: 10px;
             }
 
             .main-box {
-                padding: 25px 17px;
+                width: 100%;
+                max-width: 100%;
+                padding: 24px 15px;
                 border-radius: 18px;
             }
 
             .logo-box,
             .logo {
-                width: 105px;
-                height: 105px;
+                width: 100px;
+                height: 100px;
+            }
+
+            .logo-box {
+                margin-bottom: 14px;
+            }
+
+            .verify {
+                width: 28px;
+                height: 28px;
+                right: 0;
+                bottom: 3px;
+                font-size: 12px;
             }
 
             .title {
-                font-size: 27px;
+                font-size: 26px;
+                margin: 7px 0;
+            }
+
+            .users,
+            .trusted {
+                font-size: 13px;
             }
 
             .hindi {
                 font-size: 14px;
+                margin: 18px 0 15px;
             }
 
             .download-btn {
+                min-height: 50px;
+                padding: 14px 10px;
+                gap: 9px;
+                font-size: 15px;
+                border-radius: 11px;
+            }
+
+            .feature-box {
+                margin-top: 18px;
+                padding: 12px;
+            }
+
+            .feature-item {
+                font-size: 12px;
+                padding: 9px 2px;
+            }
+
+            .feature-item i {
+                margin-right: 7px;
+                width: 16px;
+            }
+
+            .footer-box {
+                margin-top: 19px;
+                gap: 8px;
+                font-size: 10px;
+            }
+
+            .footer-box i {
                 font-size: 16px;
+            }
+        }
+
+        /* Small Mobile */
+        @media (max-width: 360px) {
+
+            .main-section {
+                padding: 10px 8px;
+            }
+
+            .main-box {
+                padding: 21px 12px;
+            }
+
+            .logo-box,
+            .logo {
+                width: 92px;
+                height: 92px;
+            }
+
+            .title {
+                font-size: 24px;
+            }
+
+            .users,
+            .trusted {
+                font-size: 12px;
+            }
+
+            .download-btn {
+                font-size: 14px;
+                gap: 7px;
+                padding: 13px 8px;
+            }
+
+            .feature-item {
+                font-size: 11px;
+            }
+
+            .footer-box {
+                font-size: 9px;
             }
         }
     </style>
@@ -255,7 +379,7 @@
 
         <div class="row justify-content-center">
 
-            <div class="col-lg-5 col-md-7 col-sm-10">
+            <div class="col-12">
 
                 <div class="main-box">
 
@@ -275,10 +399,11 @@
                     <!-- Heading -->
                     <h1 class="title">
 
-                        <span class="">-</span>
+                        <span>-</span>
                         <span class="red">Gautam</span>
                         <span class="white">Jha</span>
-                        <span class="">-</span>
+                        <span>-</span>
+
                     </h1>
 
                     <!-- Users -->
@@ -299,10 +424,6 @@
 
                     <!-- Hindi -->
                     <p class="hindi">
-
-                        
-
-                        
 
                     </p>
 
